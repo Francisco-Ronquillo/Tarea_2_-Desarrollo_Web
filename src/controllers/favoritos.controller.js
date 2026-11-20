@@ -4,7 +4,7 @@ const productos = require("../data/productos");
 const favoritos = require("../data/favoritos");
 
 async function listar(req, res) {
-  // req.usuario.id viene del token verificado; nunca del cuerpo ni de la URL.
+  
   const lista = await favoritos.listar(req.usuario.id);
   res
     .status(200)

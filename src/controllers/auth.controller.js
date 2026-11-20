@@ -5,7 +5,6 @@ const HttpError = require("../utils/httpError");
 const { EMAIL_RE, textoNoVacio } = require("../utils/validacion");
 const usuarios = require("../data/usuarios");
 
-// Hash falso para igualar el tiempo de respuesta cuando el correo no existe.
 const HASH_FALSO = bcrypt.hashSync("contrasena-falsa", config.bcryptRounds);
 
 async function registro(req, res) {
@@ -33,7 +32,7 @@ async function registro(req, res) {
 
   const passwordHash = await bcrypt.hash(body.password, config.bcryptRounds);
   try {
-    // Se ignora cualquier "rol" enviado por el cliente.
+    
     const usuario = await usuarios.crear({
       nombre: body.nombre.trim(),
       email,
